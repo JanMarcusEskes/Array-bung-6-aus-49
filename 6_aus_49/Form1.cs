@@ -14,12 +14,17 @@ namespace _6_aus_49
 	public partial class Form1 : Form
 	{
 		int[] ziehung = new int[6];
+
+		//Variabelen führen Code aus, wenn sie abgerufen/gesetzt werden
 		int zufall
 		{
 		get
 			{
+				//Wartet 25millisekunden (da sonst Fehler im Zufall auftreten)
 				Thread.Sleep(25);
+				//Zufallszahl erstellen
 				Random zufall = new Random(DateTime.Now.Ticks.GetHashCode());
+				//setzt int zufall zu einer zufallszahl
 				return zufall.Next(1, 49);
 			}
 		}
@@ -27,8 +32,11 @@ namespace _6_aus_49
 		{
 			set
 			{
+				//value ist der Wert, der übergeben wird
 				int[] ziehung = value;
+				//setzt lblZiehung zurück
 				lblZiehung.Text = String.Empty;
+				//Setzt das Array in die lblZiehung
 				foreach (int zahl in ziehung)
 				{
 					lblZiehung.Text += zahl + " | ";
